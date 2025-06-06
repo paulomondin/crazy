@@ -264,6 +264,8 @@ h1, h2, h3, .symbol, .token-info {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .glitch-button:hover {
@@ -271,6 +273,8 @@ h1, h2, h3, .symbol, .token-info {
     box-shadow: 
         0 0 10px rgba(255, 69, 0, 0.7),
         0 0 20px rgba(0, 102, 204, 0.7);
+    color: white;
+    text-decoration: none;
 }
 
 .glitch-button::before {
