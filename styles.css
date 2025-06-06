@@ -1,0 +1,566 @@
+/* Estilos Gerais */
+:root {
+    /* Cores Trump (quentes) */
+    --trump-primary: #ff4500;
+    --trump-secondary: #ff8c00;
+    --trump-accent: #ffcc00;
+    --trump-text: #fff;
+    
+    /* Cores Musk (frias) */
+    --musk-primary: #0066cc;
+    --musk-secondary: #00a3e0;
+    --musk-accent: #00ffff;
+    --musk-text: #fff;
+    
+    /* Cores Neutras */
+    --dark-bg: #0a0a14;
+    --light-text: #f0f0f0;
+    --glitch-yellow: #ffcc00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .symbol, .token-info {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Split Container */
+.split-container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+.split {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.split::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+/* Trump Side */
+.trump {
+    background: linear-gradient(135deg, var(--trump-primary), var(--dark-bg));
+    color: var(--trump-text);
+}
+
+.trump::before {
+    background: url('images/white-house-silhouette.png') no-repeat center center;
+    background-size: contain;
+}
+
+/* Musk Side */
+.musk {
+    background: linear-gradient(135deg, var(--dark-bg), var(--musk-primary));
+    color: var(--musk-text);
+}
+
+.musk::before {
+    background: url('images/rocket-silhouette.png') no-repeat center center;
+    background-size: contain;
+}
+
+/* Content Styling */
+.content {
+    max-width: 400px;
+    z-index: 1;
+}
+
+.content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.trump .content h2 {
+    color: var(--trump-accent);
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+.musk .content h2 {
+    color: var(--musk-accent);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.quote {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    border-left: 4px solid;
+}
+
+.trump .quote {
+    border-color: var(--trump-accent);
+}
+
+.musk .quote {
+    border-color: var(--musk-accent);
+}
+
+.feature {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+}
+
+.trump .feature {
+    background-color: rgba(255, 69, 0, 0.2);
+    border-left: 3px solid var(--trump-accent);
+}
+
+.musk .feature {
+    background-color: rgba(0, 102, 204, 0.2);
+    border-left: 3px solid var(--musk-accent);
+}
+
+.feature h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* Token Container */
+.token-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.token-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 20px rgba(255, 69, 0, 0.7),
+        0 0 40px rgba(0, 102, 204, 0.7);
+    animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 
+            0 0 20px rgba(255, 69, 0, 0.7),
+            0 0 40px rgba(0, 102, 204, 0.7);
+    }
+    100% {
+        box-shadow: 
+            0 0 30px rgba(255, 69, 0, 0.9),
+            0 0 60px rgba(0, 102, 204, 0.9);
+    }
+}
+
+.token-info {
+    margin-top: 2rem;
+    background-color: rgba(10, 10, 20, 0.8);
+    padding: 1.5rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 400px;
+}
+
+.token-info h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    color: var(--glitch-yellow);
+    position: relative;
+    display: inline-block;
+}
+
+.token-info h1::before, .token-info h1::after {
+    content: 'CRAZY';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.token-info h1::before {
+    color: var(--trump-accent);
+    transform: translateX(-3px);
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.token-info h1::after {
+    color: var(--musk-accent);
+    transform: translateX(3px);
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+.token-info h1 span {
+    font-size: 1.5rem;
+    display: block;
+    color: var(--light-text);
+}
+
+.symbol {
+    font-size: 1.5rem;
+    color: var(--light-text);
+    margin-bottom: 1rem;
+}
+
+.tagline {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.glitch-button {
+    background: linear-gradient(90deg, var(--trump-primary), var(--musk-primary));
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.glitch-button:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 10px rgba(255, 69, 0, 0.7),
+        0 0 20px rgba(0, 102, 204, 0.7);
+}
+
+.glitch-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s ease;
+}
+
+.glitch-button:hover::before {
+    left: 100%;
+}
+
+/* Info Section */
+.info-section {
+    background-color: var(--dark-bg);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(45deg, rgba(255, 69, 0, 0.1) 0%, transparent 70%),
+        linear-gradient(-45deg, rgba(0, 102, 204, 0.1) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.glitch-text {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--light-text);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.glitch-text::before, .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    color: var(--trump-accent);
+    transform: translateX(-5px);
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+}
+
+.glitch-text::after {
+    color: var(--musk-accent);
+    transform: translateX(5px);
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.info-card {
+    background: rgba(20, 20, 30, 0.7);
+    border-radius: 10px;
+    padding: 1.5rem;
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.info-card:nth-child(odd) {
+    border-left: 3px solid var(--trump-accent);
+}
+
+.info-card:nth-child(even) {
+    border-left: 3px solid var(--musk-accent);
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Timeline Section */
+.timeline-section {
+    background-color: rgba(15, 15, 25, 0.9);
+    padding: 4rem 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--trump-primary), var(--musk-primary));
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.timeline-item:nth-child(odd) {
+    padding-right: calc(50% + 2rem);
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    padding-left: calc(50% + 2rem);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--dark-bg);
+    border: 3px solid;
+}
+
+.timeline-item:nth-child(odd)::before {
+    right: calc(50% - 10px);
+    border-color: var(--trump-accent);
+}
+
+.timeline-item:nth-child(even)::before {
+    left: calc(50% - 10px);
+    border-color: var(--musk-accent);
+}
+
+.date {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-item:nth-child(odd) .date {
+    color: var(--trump-accent);
+}
+
+.timeline-item:nth-child(even) .date {
+    color: var(--musk-accent);
+}
+
+.event {
+    background-color: rgba(20, 20, 30, 0.7);
+    padding: 1rem;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+}
+
+.timeline-item:nth-child(odd) .event {
+    border-right: 3px solid var(--trump-accent);
+}
+
+.timeline-item:nth-child(even) .event {
+    border-left: 3px solid var(--musk-accent);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-bg);
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    color: var(--glitch-yellow);
+}
+
+.logo span {
+    font-size: 1rem;
+    color: var(--light-text);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-link {
+    color: var(--light-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--glitch-yellow);
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .split-container {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .split {
+        padding: 4rem 2rem;
+    }
+    
+    .token-container {
+        position: static;
+        transform: none;
+        margin: 3rem auto;
+        padding: 2rem;
+    }
+    
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        padding: 0 0 0 3rem;
+        text-align: left;
+    }
+    
+    .timeline::before {
+        left: 0;
+    }
+    
+    .timeline-item:nth-child(odd)::before,
+    .timeline-item:nth-child(even)::before {
+        left: -10px;
+        right: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .token-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .token-info h1 {
+        font-size: 2rem;
+    }
+    
+    .glitch-text {
+        font-size: 2rem;
+    }
+}
+
